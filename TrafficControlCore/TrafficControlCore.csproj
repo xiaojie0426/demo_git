@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36EF984D-B332-4079-8F35-32464ACF33D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrafficControlCore</RootNamespace>
+    <AssemblyName>TrafficControlCore</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <LangVersion>latest</LangVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <LangVersion>latest</LangVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SimpleComposer">
+      <HintPath>..\packages\SimpleComposer.exe</HintPath>
+    </Reference>
+    <Reference Include="SimpleCore">
+      <HintPath>..\packages\SimpleCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdaptabilitySystem\ExceptionManager.cs" />
+    <Compile Include="AgentSystem\ActionExecutor.cs" />
+    <Compile Include="AgentSystem\Agent.cs" />
+    <Compile Include="AvoidSystem\Avoid.cs" />
+    <Compile Include="AvoidSystem\AvoidManager.cs" />
+    <Compile Include="Cars\SimulatorCarFourWay.cs" />
+    <Compile Include="DispatchSystem\DispatchMission.cs" />
+    <Compile Include="DispatchSystem\Graph\LockAndReservation.cs" />
+    <Compile Include="DispatchSystem\Graph\SectorGraph.cs" />
+    <Compile Include="DispatchSystem\Pathplan\NodeFinder.cs" />
+    <Compile Include="DispatchSystem\Pathplan\PathPlan.cs" />
+    <Compile Include="DispatchSystem\Pathplan\SectorAstar.cs" />
+    <Compile Include="PreMoveSystem\Charge.cs" />
+    <Compile Include="PreMoveSystem\PreMove.cs" />
+    <Compile Include="TaskSystem\AgvTask.cs" />
+    <Compile Include="TaskSystem\allocationHelper.cs" />
+    <Compile Include="TaskSystem\tmpStorageHelper.cs" />
+    <Compile Include="TaskSystem\Utils.cs" />
+    <Compile Include="TrafficControlCore.cs" />
+    <Compile Include="UI\AddSingleTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddSingleTask.Designer.cs">
+      <DependentUpon>AddSingleTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TaskManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TaskManager.Designer.cs">
+      <DependentUpon>TaskManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Geometry.cs" />
+    <Compile Include="Utils\KuhnMunkres.cs" />
+    <Compile Include="Utils\MinHeap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SimpleComposer.exe" />
+    <Content Include="SimpleComposer.pdb" />
+    <Content Include="SimpleCore.dll" />
+    <Content Include="SimpleCore.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\AddSingleTask.resx">
+      <DependentUpon>AddSingleTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TaskManager.resx">
+      <DependentUpon>TaskManager.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
